@@ -64,7 +64,7 @@ class App extends Component {
     }
 
     onSubmit = () => {
-        const { inputValue, currenciesList, currencyResult } = this.state;
+        const { inputValue, currenciesList } = this.state;
         const num = Number(inputValue);
         console.log('inputValue:', num.toFixed(2));
         let obj = [];
@@ -201,8 +201,6 @@ class App extends Component {
         console.log('currencyResult:', currencyResult);
         let objPresent = [];
         objNameList.map((data, key) => {
-            // <li><i className="fas fa-circle"></i> List icons</li>
-            // objPresent.push(`${data.value} : ${currencyResult[key]}`)
             if(currencyResult[key] > 0) {
                 objPresent.push(<li><i className="fas fa-circle"></i>{`${data.value} ${data.currency} : ${currencyResult[key]}`}</li>)
             }
@@ -211,6 +209,7 @@ class App extends Component {
             <div className="App-header">
                 <div className="input-group col-md-4">
                     <input
+                        id='input-test'
                         type="text"
                         className="form-control"
                         placeholder="input your money Ex. 129.24"
@@ -227,9 +226,9 @@ class App extends Component {
                     </div>
                 </div>
                 <br />
-                <text> = {this.state.inputValue}</text>
+                <text id='text-test'> = {this.state.inputValue}</text>
                 <br />
-                <ul className="fa-ul">
+                <ul value={objPresent} id="output" className="fa-ul">
                     {objPresent}
                 </ul>
             </div>
